@@ -1,0 +1,7 @@
+{
+	"name": "Store",
+	"slug": "store",
+	"version": "1.0",
+	"description": "Store's API services",
+	"enabled": true
+}
