@@ -15,4 +15,8 @@ Route::group(['prefix' => 'store'], function() {
 	Route::get('/', function() {
 		dd('This is the Store module index page.');
 	});
+
+    //Route::post('/citizens', 'CitizenController@register');
+    
+    Route::resource('member', 'MemberController');
 });

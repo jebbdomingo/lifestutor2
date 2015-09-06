@@ -146,7 +146,7 @@ return [
         Framework\Providers\RouteServiceProvider::class,
 
         /*
-         * Caffeinated Module Provider
+         * Caffeinated Module Service Provider
          */
         Caffeinated\Modules\ModulesServiceProvider::class,
 
