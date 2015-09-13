@@ -53,7 +53,7 @@ return [
         ],
 
         'mysql' => [
-            'driver'    => 'mysql',
+            'driver'    => 'pdo_mysql',
             'host'      => env('DB_HOST', 'localhost'),
             'database'  => env('DB_DATABASE', 'forge'),
             'username'  => env('DB_USERNAME', 'forge'),

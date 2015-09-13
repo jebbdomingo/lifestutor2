@@ -8,6 +8,7 @@ use Lifestutor\Domains\Member\Jobs\ValidateMemberCreationInputJob;
 use Lifestutor\Domains\Notification\Jobs\NotifyMemberJob;
 use Lifestutor\Domains\Notification\Notifications\MemberCreatedNotification;
 use Lifestutor\Domains\Http\Jobs\RespondWithJsonJob;
+use Lifestutor\Services\Store\Resources\Views\Transformers\MemberTransformer;
 
 /**
  * Implements the feature of registering a member in the store.
@@ -24,8 +25,9 @@ class RegisterMemberFeature extends AbstractFeature
 
         $member = $this->run(RegisterMemberJob::class, $request);
 
-        //$this->runInQueue(NotifyMemberJob::class, ['notification' => new MemberCreatedNotification($member)]);
+        return $this->run(RespondWithJsonJob::class, ['data' => $member, 'transformer' => new MemberTransformer]);
 
-        return $this->run(RespondWithJsonJob::class, ['content' => $member]);
+        //$this->runInQueue(NotifyMemberJob::class, ['notification' => new MemberCreatedNotification($member)]);
+        
     }
 }

@@ -14,6 +14,15 @@ class RouteServiceProvider extends ServiceProvider
     protected $serviceName = '';
 
     /**
+     * @return void
+     */
+    public function register()
+    {
+        // Bind SerializerAbstract to use DataArraySerializer instead, to wrap the record or collection into data object
+        $this->app->bind('League\Fractal\Serializer\SerializerAbstract', 'League\Fractal\Serializer\DataArraySerializer');
+    }
+
+    /**
      * Define the routes for the module.
      *
      * @param  \Illuminate\Routing\Router $router

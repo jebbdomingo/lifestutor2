@@ -150,6 +150,16 @@ return [
          */
         Caffeinated\Modules\ModulesServiceProvider::class,
 
+        /*
+         * Atrauzzi LaravelDoctrine
+         */
+        Atrauzzi\LaravelDoctrine\ServiceProvider::class,
+
+        /*
+         * Larasponse Fractal
+         */
+        Sorskod\Larasponse\LarasponseServiceProvider::class,
+
     ],
 
     /*
@@ -199,8 +209,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'Module' => Caffeinated\Modules\Facades\Module::class,
-
+        /*
+         * Third-party vendors
+         */
+        'Module'        => Caffeinated\Modules\Facades\Module::class,
+        'EntityManager' => Atrauzzi\LaravelDoctrine\Support\Facades\Doctrine::class,
     ],
 
 ];
