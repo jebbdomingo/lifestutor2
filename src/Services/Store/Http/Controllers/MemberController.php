@@ -8,6 +8,9 @@ use Lifestutor\Foundation\InvalidInputException;
 
 use Lifestutor\Foundation\Http\Controller;
 use Lifestutor\Services\Store\Features\RegisterMemberFeature;
+use Lifestutor\Services\Store\Features\GetMemberFeature;
+use Lifestutor\Services\Store\Resources\Views\Transformers\ExceptionTransformer;
+use Lifestutor\Domains\Http\Jobs\RespondWithJsonJob;
 
 /**
  * @author Jebb Domingo <jebb.domingo@gmail.com>
@@ -61,7 +64,17 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['name' => 'Baymax', 'state' => 'WA']);
+        try {
+            return $this->serve(GetMemberFeature::class, array('id' => $id));
+        } catch(\Exception $e) {
+            $data = [
+                'data'        => $e,
+                'transformer' => new ExceptionTransformer,
+                'status'      => $e->getCode()
+            ];
+            
+            return $this->serve(RespondWithJsonJob::class, $data);
+        }
     }
 
     /**

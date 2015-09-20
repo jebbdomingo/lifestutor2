@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'store'], function() {
+Route::group(['prefix' => 'store/v1'], function() {
 	Route::get('/', function() {
 		dd('This is the Store module index page.');
 	});

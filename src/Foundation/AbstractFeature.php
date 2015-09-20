@@ -16,6 +16,7 @@ use Lifestutor\Domains\Queue\AbstractQueue as Queue;
 abstract class AbstractFeature implements SelfHandling
 {
     use DispatchesJobs;
+    
     /**
      * beautifier function to be called instead of the
      * laravel function dispatchFromArray.
