@@ -18,5 +18,6 @@ Route::group(['prefix' => 'store/v1'], function() {
 
     //Route::post('/citizens', 'CitizenController@register');
     
+    Route::post('auth/login', 'Auth\AuthController@postLogin');
     Route::resource('member', 'MemberController');
 });

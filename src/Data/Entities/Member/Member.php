@@ -3,16 +3,17 @@
 namespace Lifestutor\Data\Entities\Member;
 
 use Doctrine\ORM\Mapping as ORM;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="Member")
  */
-class Member
+class Member implements Authenticatable
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -28,17 +29,19 @@ class Member
     protected $last_name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", unique=true)
      */
-    protected $email_address;
+    protected $email;
 
     /**
-     * @return integer
+     * @ORM\column(type="string")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    protected $password;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $token;
 
     /**
      * @return string
@@ -85,18 +88,85 @@ class Member
      */
     public function getEmailAddress()
     {
-        return $this->email_address;
+        return $this->email;
     }
 
     /**
-     * @param string $name
+     * Set email address
+     * 
+     * @param string $value Email address
      *
      * @return self
      */
-    public function setEmailAddress($email_address)
+    public function setEmailAddress($value)
     {
-        $this->email_address = $email_address;
+        $this->email = $value;
 
         return $this;
+    }
+
+    /**
+     * Set password
+     * 
+     * @param string $value Password
+     *
+     * @return self
+     */
+    public function setPassword($value)
+    {
+        $this->password = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get the unique identifier for the user.
+     *
+     * @return mixed
+     */
+    public function getAuthIdentifier()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Get the token value for the "remember me" session.
+     *
+     * @return string
+     */
+    public function getRememberToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Set the token value for the "remember me" session.
+     *
+     * @param  string $value
+     * @return void
+     */
+    public function setRememberToken($value)
+    {
+        $this->token = $value;
+    }
+
+    /**
+     * Get the column name for the "remember me" token.
+     *
+     * @return string
+     */
+    public function getRememberTokenName()
+    {
+        return 'remember_me_token';
     }
 }

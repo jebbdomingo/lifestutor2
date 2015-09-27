@@ -11,7 +11,8 @@
         "laravel/framework": "5.1.*",
         "caffeinated/modules": "~2.0",
         "atrauzzi/laravel-doctrine": "dev-master",
-        "sorskod/larasponse": "dev-L5"
+        "sorskod/larasponse": "dev-L5",
+        "beberlei/assert": "^2.3@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

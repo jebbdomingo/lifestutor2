@@ -243,8 +243,8 @@
 	],
 
     'auth' => [
-        //'authenticator' => 'Atrauzzi\LaravelDoctrine\DoctrineAuthenticator',
-        //'model' => 'App\Models\User',
+        'authenticator' => 'Atrauzzi\LaravelDoctrine\DoctrineAuthenticator',
+        'model'         => 'Lifestutor\Data\Entities\Member',
     ]
 
 ];

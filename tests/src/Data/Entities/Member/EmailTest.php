@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-use Lifestutor\Data\Entities\Member\Member;
+use Lifestutor\Data\Entities\Member\Email;
 
 class EmailTest extends TestCase
 {
@@ -17,7 +17,7 @@ class EmailTest extends TestCase
     {
         $this->setExpectedException('Exception');
 
-        $member = new Email;
+        $member = new Email();
 
         //$this->assertEquals($member->getFirstName(), 'Dela Cruz');
     }
@@ -29,7 +29,7 @@ class EmailTest extends TestCase
      */
     public function testShouldRequireValidEmail()
     {
-        $this->setExpectedException('Lifestutor\Foundation\InvalidEmailException');
+        $this->setExpectedException('Assert\AssertionFailedException');
 
         $member = new Email('this_is_not_a_valid_email');
     }
@@ -43,6 +43,6 @@ class EmailTest extends TestCase
     {
         $email = new Email('name@domain.com');
 
-        $this->assertInstanceOf('Cribbb\Domain\Model\Users\Email', $email);
+        $this->assertInstanceOf('Lifestutor\Data\Entities\Member\Email', $email);
     }
 }
