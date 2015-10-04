@@ -3,13 +3,12 @@
 namespace Lifestutor\Data\Entities\Member;
 
 use Doctrine\ORM\Mapping as ORM;
-use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="Member")
  */
-class Member implements Authenticatable
+class Member
 {
     /**
      * @ORM\Id
@@ -124,7 +123,7 @@ class Member implements Authenticatable
      *
      * @return mixed
      */
-    public function getAuthIdentifier()
+    public function getId()
     {
         return $this->id;
     }
@@ -134,39 +133,8 @@ class Member implements Authenticatable
      *
      * @return string
      */
-    public function getAuthPassword()
+    public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * Get the token value for the "remember me" session.
-     *
-     * @return string
-     */
-    public function getRememberToken()
-    {
-        return $this->token;
-    }
-
-    /**
-     * Set the token value for the "remember me" session.
-     *
-     * @param  string $value
-     * @return void
-     */
-    public function setRememberToken($value)
-    {
-        $this->token = $value;
-    }
-
-    /**
-     * Get the column name for the "remember me" token.
-     *
-     * @return string
-     */
-    public function getRememberTokenName()
-    {
-        return 'remember_me_token';
     }
 }

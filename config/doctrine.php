@@ -85,14 +85,14 @@
         // 'default' => 'mysql',
 
         // Override your laravel values here if desired.
-        /*'mysql' => [
-            'driver' => 'mysqli',
+        'mysql' => [
+            'driver' => 'pdo_mysql',
             'host'      => env('DB_HOST', 'localhost'),
             'dbname'  => env('DB_DATABASE', 'forge'),
             'user'  => env('DB_USERNAME', 'forge'),
             'password'  => env('DB_PASSWORD', ''),
             'prefix' => ''
-        ],*/
+        ],
 
         // Some preset configurations to map laravel sqlite configs to doctrine
         'sqlite' => [

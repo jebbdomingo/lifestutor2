@@ -12,7 +12,8 @@
         "caffeinated/modules": "~2.0",
         "atrauzzi/laravel-doctrine": "dev-master",
         "sorskod/larasponse": "dev-L5",
-        "beberlei/assert": "^2.3@dev"
+        "beberlei/assert": "^2.3@dev",
+        "league/oauth2-server": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
