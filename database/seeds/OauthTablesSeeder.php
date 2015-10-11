@@ -11,6 +11,7 @@ class OauthTablesSeeder extends Seeder
      */
     public function run()
     {
+        // Generate sample oauth.
         DB::table('oauth_clients')->insert([
             'id'     => 'testclient',
             'secret' => 'secret',
@@ -81,5 +82,16 @@ class OauthTablesSeeder extends Seeder
             'access_token_id' =>  'S90msiZbeY',
             'scope_id'        =>  'photo',
         ]);
+
+        // Genereate sample domain doctrine entities.
+        $em        = app('EntityManager')->getFacadeRoot();
+        $generator = \Faker\Factory::create();
+
+        $populator = new Faker\ORM\Doctrine\Populator($generator, $em);
+        $populator->addEntity('Lifestutor\Data\Entities\Member\Member', 2, array(
+          'password' => function() use ($generator) { return bcrypt($generator->password(6, 20)); }
+        ));
+
+        $insertedPKs = $populator->execute();
     }
 }

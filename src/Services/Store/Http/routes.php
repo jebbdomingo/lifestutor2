@@ -11,13 +11,10 @@
 |
 */
 
-Route::group(['prefix' => 'store/v1'], function() {
+Route::group(['prefix' => 'store/v1', 'middleware' => 'oauth'], function() {
 	Route::get('/', function() {
 		dd('This is the Store module index page.');
 	});
 
-    //Route::post('/citizens', 'CitizenController@register');
-    
-    Route::post('auth/login', 'Auth\AuthController@postLogin');
     Route::resource('member', 'MemberController');
 });
