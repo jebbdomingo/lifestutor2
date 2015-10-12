@@ -88,8 +88,9 @@ class OauthTablesSeeder extends Seeder
         $generator = \Faker\Factory::create();
 
         $populator = new Faker\ORM\Doctrine\Populator($generator, $em);
-        $populator->addEntity('Lifestutor\Data\Entities\Member\Member', 2, array(
-          'password' => function() use ($generator) { return bcrypt($generator->password(6, 20)); }
+        $populator->addEntity('Lifestutor\Data\Entities\Member\Member', 3, array(
+          'password' => function() use ($generator) { return bcrypt(str_random(10)); },
+          'token'    => function() use ($generator) { return str_random(10); }
         ));
 
         $insertedPKs = $populator->execute();
