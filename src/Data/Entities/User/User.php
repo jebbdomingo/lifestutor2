@@ -1,14 +1,14 @@
 <?php
 
-namespace Lifestutor\Data\Entities\Member;
+namespace Lifestutor\Data\Entities\User;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="Member")
+ * @ORM\Table(name="user")
  */
-class Member
+class User
 {
     /**
      * @ORM\Id

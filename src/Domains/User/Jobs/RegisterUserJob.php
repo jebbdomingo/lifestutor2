@@ -1,16 +1,16 @@
 <?php
 
-namespace Lifestutor\Domains\Member\Jobs;
+namespace Lifestutor\Domains\User\Jobs;
 
 use Lifestutor\Foundation\AbstractJob;
-use Lifestutor\Data\Entities\Member\Member;
+use Lifestutor\Data\Entities\User\User;
 use EntityManager;
 //use Lifestutor\Data\Repositories\CitizenRepository;
 
 /**
  * @author Jebb Domingo <jebb.domingo@gmail.com>
  */
-class RegisterMemberJob extends AbstractJob
+class RegisterUserJob extends AbstractJob
 {
     private $first_name;
     private $last_name;
@@ -26,15 +26,15 @@ class RegisterMemberJob extends AbstractJob
 
     public function handle(EntityManager $em)
     {
-        $member = new Member();
-        $member->setFirstName($this->first_name);
-        $member->setLastName($this->last_name);
-        $member->setEmailAddress($this->email_address);
-        $member->setPassword(bcrypt($this->password));
+        $user = new User();
+        $user->setFirstName($this->first_name);
+        $user->setLastName($this->last_name);
+        $user->setEmailAddress($this->email_address);
+        $user->setPassword(bcrypt($this->password));
 
-        $em::persist($member);
+        $em::persist($user);
         $em::flush();
 
-        return $member;
+        return $user;
     }
 }

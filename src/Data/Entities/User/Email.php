@@ -1,6 +1,6 @@
 <?php
 
-namespace Lifestutor\Data\Entities\Member;
+namespace Lifestutor\Data\Entities\User;
 
 use Assert\Assertion;
 

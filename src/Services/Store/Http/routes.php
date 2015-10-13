@@ -16,5 +16,5 @@ Route::group(['prefix' => 'store/v1', 'middleware' => 'oauth'], function() {
 		dd('This is the Store module index page.');
 	});
 
-    Route::resource('member', 'MemberController');
+    Route::resource('user', 'UserController');
 });

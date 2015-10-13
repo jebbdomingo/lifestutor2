@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 use Lifestutor\Foundation\InvalidInputException;
 
 use Lifestutor\Foundation\Http\Controller;
-use Lifestutor\Services\Store\Features\RegisterMemberFeature;
-use Lifestutor\Services\Store\Features\GetMemberFeature;
+use Lifestutor\Services\Store\Features\RegisterUserFeature;
+use Lifestutor\Services\Store\Features\GetUserFeature;
 use Lifestutor\Services\Store\Resources\Views\Transformers\ExceptionTransformer;
 use Lifestutor\Domains\Http\Jobs\RespondWithJsonJob;
 
 /**
  * @author Jebb Domingo <jebb.domingo@gmail.com>
  */
-class MemberController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,7 +46,7 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         try {
-            return $this->serve(RegisterMemberFeature::class);
+            return $this->serve(RegisterUserFeature::class);
         } catch(\Exception$e) {
             if ($e instanceof InvalidInputException) {
                 return response()->json($e->getErrors());
@@ -65,7 +65,7 @@ class MemberController extends Controller
     public function show($id)
     {
         try {
-            return $this->serve(GetMemberFeature::class, array('id' => $id));
+            return $this->serve(GetUserFeature::class, array('id' => $id));
         } catch(\Exception $e) {
             $data = [
                 'data'        => $e,

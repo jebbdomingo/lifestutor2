@@ -1,15 +1,15 @@
 <?php
 
-namespace Lifestutor\Domains\Member\Jobs;
+namespace Lifestutor\Domains\User\Jobs;
 
 use Illuminate\Http\Request;
 use Lifestutor\Foundation\AbstractJob;
-use Lifestutor\Domains\Member\Validators\MemberCreationValidator as Validator;
+use Lifestutor\Domains\User\Validators\UserCreationValidator as Validator;
 
 /**
  * @author Jebb Domingo <jebb.domingo@gmail.com>
  */
-class ValidateMemberCreationInputJob extends AbstractJob
+class ValidateUserCreationInputJob extends AbstractJob
 {
     public function handle(Validator $validator, Request $request)
     {

@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Doctrine\ORM\Tools\SchemaTool;
 
-class CreateMembersTable extends Migration
+class CreateUserTable extends Migration
 {
     private $tool;
     private $em;
@@ -24,7 +24,7 @@ class CreateMembersTable extends Migration
     public function up()
     {
         $classes = array(
-            $this->em->getClassMetadata('Lifestutor\Data\Entities\Member\Member')
+            $this->em->getClassMetadata('Lifestutor\Data\Entities\User\User')
         );
 
         $this->tool->createSchema($classes);
@@ -38,7 +38,7 @@ class CreateMembersTable extends Migration
     public function down()
     {
         $classes = array(
-            $this->em->getClassMetadata('Lifestutor\Data\Entities\Member\Member')
+            $this->em->getClassMetadata('Lifestutor\Data\Entities\User\User')
         );
 
         $this->tool->dropSchema($classes);

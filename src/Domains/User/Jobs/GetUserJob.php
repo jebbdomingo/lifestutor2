@@ -1,15 +1,15 @@
 <?php
 
-namespace Lifestutor\Domains\Member\Jobs;
+namespace Lifestutor\Domains\User\Jobs;
 
 use Lifestutor\Foundation\AbstractJob;
-use Lifestutor\Data\Entities\Member\Member;
+use Lifestutor\Data\Entities\User\User;
 use EntityManager;
 
 /**
  * @author Jebb Domingo <jebb.domingo@gmail.com>
  */
-class GetMemberJob extends AbstractJob
+class GetUserJob extends AbstractJob
 {
     private $id;
 
@@ -20,8 +20,8 @@ class GetMemberJob extends AbstractJob
 
     public function handle(EntityManager $em)
     {
-        $member = $em::getRepository('Lifestutor\Data\Entities\Member\Member')->find($this->id);
+        $user = $em::getRepository('Lifestutor\Data\Entities\User\User')->find($this->id);
 
-        return $member;
+        return $user;
     }
 }

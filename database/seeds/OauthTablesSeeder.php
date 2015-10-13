@@ -82,17 +82,5 @@ class OauthTablesSeeder extends Seeder
             'access_token_id' =>  'S90msiZbeY',
             'scope_id'        =>  'photo',
         ]);
-
-        // Genereate sample domain doctrine entities.
-        $em        = app('EntityManager')->getFacadeRoot();
-        $generator = \Faker\Factory::create();
-
-        $populator = new Faker\ORM\Doctrine\Populator($generator, $em);
-        $populator->addEntity('Lifestutor\Data\Entities\Member\Member', 3, array(
-          'password' => function() use ($generator) { return bcrypt(str_random(10)); },
-          'token'    => function() use ($generator) { return str_random(10); }
-        ));
-
-        $insertedPKs = $populator->execute();
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace Lifestutor\Domains\Member\Validators;
+namespace Lifestutor\Domains\User\Validators;
 
 use Lifestutor\Foundation\Validator;
 
 /**
  * @author Jebb Domingo <jebb.domingo@gmail.com>
  */
-class MemberCreationValidator extends Validator
+class UserCreationValidator extends Validator
 {
     protected $rules = [
         'first_name' => 'required',
