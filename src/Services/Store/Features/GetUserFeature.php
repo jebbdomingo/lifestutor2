@@ -9,22 +9,37 @@ use Lifestutor\Services\Store\Resources\Views\Transformers\UserTransformer;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Implements the feature of registering a user in the store.
+ * Implements the feature of fetching a user from the store.
  *
  * @author Jebb Domingo <jebb.domingo@gmail.com>
  */
 class GetUserFeature extends AbstractFeature
 {
-    private $input;
+    /**
+     * [$id description]
+     *
+     * @var [type]
+     */
+    private $id;
 
+    /**
+     * [__construct description]
+     *
+     * @param integer $id ID of the user
+     */
     public function __construct($id)
     {
-        $this->input = ['id' => $id];
+        $this->id = $id;
     }
 
+    /**
+     * [handle description]
+     *
+     * @return string
+     */
     public function handle()
     {
-        $user = $this->run(GetUserJob::class, $this->input);
+        $user = $this->run(new GetUserJob($this->id));
 
         if (is_null($user)) {
             throw new NotFoundHttpException("A user with ID # ({$this->input['id']}) not found", null, 404);

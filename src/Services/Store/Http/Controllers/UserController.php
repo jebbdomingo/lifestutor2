@@ -47,7 +47,7 @@ class UserController extends Controller
     {
         try {
             return $this->serve(RegisterUserFeature::class);
-        } catch(\Exception$e) {
+        } catch(\Exception $e) {
             if ($e instanceof InvalidInputException) {
                 return response()->json($e->getErrors());
             } else {
@@ -65,7 +65,7 @@ class UserController extends Controller
     public function show($id)
     {
         try {
-            return $this->serve(GetUserFeature::class, array('id' => $id));
+            return $this->serve(new GetUserFeature($id));
         } catch(\Exception $e) {
             $data = [
                 'data'        => $e,

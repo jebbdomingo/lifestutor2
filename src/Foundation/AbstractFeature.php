@@ -35,6 +35,7 @@ abstract class AbstractFeature implements SelfHandling
         } else {
             $result = $this->dispatchFromArray($job, $arguments);
         }
+
         return $result;
     }
     /**
@@ -51,9 +52,11 @@ abstract class AbstractFeature implements SelfHandling
         if (!$queue) {
             $queue = DefaultQueue::class;
         }
+
         $reflection = new ReflectionClass($job);
         $jobInstance = $reflection->newInstanceArgs($arguments);
         $jobInstance->onQueue((string) $queue);
+        
         return $this->dispatch($jobInstance);
     }
 }
